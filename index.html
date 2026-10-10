@@ -102,18 +102,78 @@
         gap: 12px;
       }
 
-      .task-card {
-        flex-direction: column;
-        align-items: flex-start;
+      #taskListContainer .task-card {
+        align-items: center;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 20px;
       }
 
       .task-card .task-main {
-        width: 100%;
+        width: auto;
+        min-width: 0;
+        align-items: center;
+        gap: 12px;
       }
 
-      .task-delete {
-        align-self: flex-end;
-        margin-top: -8px;
+      .task-card .task-main > button {
+        width: 28px;
+        height: 28px;
+        margin-top: 2px;
+      }
+
+      .task-card .task-content {
+        flex: 1;
+        min-width: 0;
+        text-align: center;
+      }
+
+      .task-card .task-main > div > div {
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+
+      .task-card .task-main span {
+        max-width: 100%;
+        white-space: normal;
+        line-height: 1.35;
+        font-size: 11px;
+      }
+
+      .task-card .task-main p {
+        font-size: 15px;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+      }
+
+      #taskListContainer .task-card .task-delete {
+        flex: 0 0 36px;
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        margin: 0;
+        align-self: center;
+        opacity: 1;
+      }
+
+      #taskListContainer > div:not(.task-card) {
+        padding: 24px 18px;
+        border-radius: 20px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      #taskListContainer > div:not(.task-card) p {
+        font-size: 14px;
+      }
+
+      #taskListContainer > div:not(.task-card) br {
+        display: none;
+      }
+
+      #taskListContainer > div:not(.task-card) p br {
+        display: initial;
       }
 
       #gardenContainer {
@@ -313,7 +373,7 @@
             <button onclick="toggleComplete(${task.id})" class="w-8 h-8 rounded-full border-2 border-[#60a5fa] hover:bg-[#60a5fa] hover:text-[#081724] flex items-center justify-center transition-all flex-shrink-0 text-[#7dd3fc] hover:text-[#081724]">
               <i data-lucide="check" style="width: 16px; height: 16px; stroke-width: 3;"></i>
             </button>
-            <div>
+            <div class="task-content">
               <div class="flex flex-wrap items-center gap-2 mb-1">
                 <span class="text-xs font-bold text-[#dfeeff] bg-[#12263b] px-2 py-1 rounded-xl block w-max border border-[#1d3557]">
                   ${task.subject}
