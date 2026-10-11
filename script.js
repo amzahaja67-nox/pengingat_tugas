@@ -24,12 +24,12 @@
     };
 
     const taskAccents = [
-      { accent: '#7c5ce7', dark: '#6344c0', tint: '#f5f1ff', border: '#e5dcff' },
-      { accent: '#e87956', dark: '#bb5639', tint: '#fff3ed', border: '#f8dfd2' },
-      { accent: '#319b88', dark: '#247565', tint: '#edf9f5', border: '#d3eee5' },
-      { accent: '#d39a32', dark: '#9b6d16', tint: '#fff8e8', border: '#f2e5c4' },
-      { accent: '#d96886', dark: '#ad4563', tint: '#fff1f5', border: '#f5d9e2' },
-      { accent: '#5484c7', dark: '#3f68a5', tint: '#eff5ff', border: '#d9e5f7' }
+      { accent: '#9b8cff', dark: '#c0b8ff', tint: '#211e42', border: '#50478f' },
+      { accent: '#ff896f', dark: '#ffb09d', tint: '#3b211f', border: '#895044' },
+      { accent: '#4de1b3', dark: '#8af4d2', tint: '#123631', border: '#2a7562' },
+      { accent: '#ffc857', dark: '#ffdc88', tint: '#3a2e16', border: '#806526' },
+      { accent: '#ff7894', dark: '#ffadbd', tint: '#3c1f2b', border: '#894557' },
+      { accent: '#58b7ff', dark: '#9ad5ff', tint: '#132e46', border: '#32698d' }
     ];
 
     let tasks = [];
@@ -240,4 +240,3 @@
 
     // Start App
     init();
-
