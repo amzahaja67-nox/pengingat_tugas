@@ -29,7 +29,7 @@
         radial-gradient(ellipse at 8% 0%, rgba(167, 202, 255, 0.48), transparent 34rem),
         radial-gradient(ellipse at 100% 14%, rgba(177, 235, 238, 0.38), transparent 30rem),
         var(--bg);
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Quicksand', sans-serif;
       color: var(--text);
       min-height: 100vh;
     }
@@ -99,6 +99,17 @@
       color: var(--task-accent-dark, #5940a8) !important;
       background: var(--task-tint, #f5f1ff) !important;
       border-color: var(--task-border, #e8e5de) !important;
+      font-weight: 700;
+    }
+
+    .task-card .task-text {
+      color: #243a53 !important;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: 0.01em;
+      text-align: center;
+      margin: 0;
     }
 
     .task-card .task-delete {

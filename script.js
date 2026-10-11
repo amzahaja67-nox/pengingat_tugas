@@ -93,7 +93,7 @@
       pendingTasks.forEach((task, index) => {
         const accent = taskAccents[index % taskAccents.length];
         const deadlineHtml = task.deadline ? `
-          <span class="task-deadline text-xs font-semibold text-[#cfe8ff] bg-[#12263b] px-2 py-1 rounded-xl flex items-center gap-1 w-max border border-[#1d3557]">
+          <span class="task-deadline text-xs font-bold px-2 py-1 rounded-xl flex items-center gap-1 w-max border" style="color: ${accent.dark}; background: ${accent.tint}; border-color: ${accent.border};">
             <i data-lucide="calendar" style="width: 12px; height: 12px;"></i> ${formatDateFriendly(task.deadline)}
           </span>
         ` : '';
@@ -111,12 +111,12 @@
             </button>
             <div class="task-content">
               <div class="flex flex-wrap items-center gap-2 mb-1">
-                <span class="task-subject text-xs font-bold text-[#dfeeff] bg-[#12263b] px-2 py-1 rounded-xl block w-max border border-[#1d3557]">
+                <span class="task-subject text-xs font-bold px-2 py-1 rounded-xl block w-max border" style="color: ${accent.dark}; background: ${accent.tint}; border-color: ${accent.border};">
                   ${task.subject}
                 </span>
                 ${deadlineHtml}
               </div>
-              <p class="font-semibold text-lg text-[#edf6ff]">${task.text}</p>
+              <p class="task-text">${task.text}</p>
             </div>
           </div>
           <button onclick="deleteTask(${task.id})" class="task-delete text-[#fca5a5] hover:text-[#f87171] hover:bg-[#1f2937] p-2 rounded-full transition-all opacity-0 group-hover:opacity-100 focus:opacity-100" aria-label="Hapus tugas">
