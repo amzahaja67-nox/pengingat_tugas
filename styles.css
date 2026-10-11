@@ -46,6 +46,11 @@
       transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
     }
 
+    .page-shell > .glass-panel:not(#progressSection) {
+      background: linear-gradient(145deg, #122b46 0%, #0e2137 58%, #10233a 100%);
+      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.26), 0 0 34px rgba(28, 139, 190, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
     .glass-panel:hover {
       border-color: #2d5977;
       box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(53, 213, 255, 0.04);
@@ -136,8 +141,8 @@
     .task-input,
     .task-select {
       color: var(--text) !important;
-      background: var(--field-tint, #0d1b2d) !important;
-      border-color: var(--field-border, #23415e) !important;
+      background: #0d1d2d !important;
+      border-color: #28506f !important;
       border-width: 1px 1px 1px 4px !important;
       border-radius: 18px !important;
       transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
@@ -149,50 +154,117 @@
 
     .task-input:focus,
     .task-select:focus {
-      --tw-ring-color: color-mix(in srgb, var(--field-accent, #35d5ff) 24%, transparent) !important;
-      border-color: var(--field-accent, #35d5ff) !important;
+      --tw-ring-color: rgba(53, 213, 255, 0.3) !important;
+      border-color: #55e3ff !important;
       background: #12243a !important;
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--field-accent, #35d5ff) 15%, transparent), 0 8px 22px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 0 0 4px rgba(53, 213, 255, 0.25), 0 8px 22px rgba(0, 0, 0, 0.18);
     }
 
     .subject-field {
       --field-accent: #35d5ff;
-      --field-tint: #0d273b;
-      --field-border: #23617a;
+      --field-tint: #0d1d2d;
+      --field-border: #28506f;
     }
 
     .target-field {
-      --field-accent: #4de1b3;
-      --field-tint: #0d2d2b;
-      --field-border: #246555;
+      --field-accent: #35d5ff;
+      --field-tint: #0d1d2d;
+      --field-border: #28506f;
     }
 
     .date-field {
-      --field-accent: #ffc857;
-      --field-tint: #2d2719;
-      --field-border: #765c25;
+      --field-accent: #35d5ff;
+      --field-tint: #0d1d2d;
+      --field-border: #28506f;
     }
 
     .subject-field > div:first-child i {
       color: #35d5ff !important;
+      filter: drop-shadow(0 0 6px rgba(53, 213, 255, 0.45));
     }
 
-    .date-field > div:first-child i {
-      color: #ffc857 !important;
+    .date-picker-trigger {
+      position: absolute;
+      z-index: 2;
+      inset: 0 auto 0 0;
+      width: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #55e3ff;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .date-picker-trigger:hover,
+    .date-picker-trigger:focus-visible {
+      color: #8cecff;
+    }
+
+    .date-picker-trigger i {
+      filter: drop-shadow(0 0 6px rgba(53, 213, 255, 0.55));
+    }
+
+    .date-field input::-webkit-calendar-picker-indicator {
+      display: none !important;
+      width: 0;
+      opacity: 0 !important;
+      background: none;
+      cursor: pointer;
+    }
+
+    .date-field input::-webkit-clear-button,
+    .date-field input::-webkit-inner-spin-button {
+      display: none !important;
+      -webkit-appearance: none;
+    }
+
+    .date-field input {
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
     }
 
     .empty-state {
       color: #9db2c9;
       background: #0d1b2d !important;
       border-color: #23415e !important;
+      padding: 2.5rem 1.5rem !important;
+      box-shadow: inset 0 0 32px rgba(53, 213, 255, 0.045);
     }
 
     .empty-state p {
       color: #c4d5e6 !important;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
-    .empty-state svg {
-      color: #35d5ff !important;
+    .empty-state-visual {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 1rem;
+      border: 1px solid rgba(53, 213, 255, 0.35);
+      border-radius: 26px;
+      background: #112b43;
+      color: #55e3ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 26px rgba(53, 213, 255, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    }
+
+    .empty-state-visual svg {
+      width: 42px !important;
+      height: 42px !important;
+      stroke-width: 1.8;
+      filter: drop-shadow(0 0 8px rgba(53, 213, 255, 0.42));
+    }
+
+    .empty-state .empty-state-hint {
+      color: #7f9bb6 !important;
+      font-size: 0.82rem;
+      margin-top: 0.35rem;
     }
 
     #gardenContainer {
@@ -222,6 +294,8 @@
 
     .page-shell h1 {
       color: #a8efff !important;
+      font-weight: 900;
+      letter-spacing: -0.035em;
     }
 
     .page-shell h1 i {
@@ -230,6 +304,14 @@
 
     .page-shell h2 {
       color: #c5edff !important;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .program-badge,
+    #encouragementText,
+    .page-shell p.text-center {
+      opacity: 0.82;
     }
 
     #encouragementText {

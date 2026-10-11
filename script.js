@@ -44,6 +44,29 @@
     const gardenCount = document.getElementById('gardenCount');
     const progressSection = document.getElementById('progressSection');
     const encouragementText = document.getElementById('encouragementText');
+    const datePickerTrigger = document.querySelector('.date-picker-trigger');
+
+    datePickerTrigger.addEventListener('click', () => {
+      deadlineInput.focus();
+      if (typeof deadlineInput.showPicker === 'function') {
+        try {
+          deadlineInput.showPicker();
+        } catch (error) {
+          // The focus handler or browser-native picker may already be active.
+        }
+      }
+    });
+
+    // Open the native calendar as soon as the deadline field receives focus.
+    deadlineInput.addEventListener('focus', () => {
+      if (typeof deadlineInput.showPicker === 'function') {
+        try {
+          deadlineInput.showPicker();
+        } catch (error) {
+          // Some browsers only allow showPicker from a direct user gesture.
+        }
+      }
+    });
     // --- INITIALIZATION ---
     function init() {
       // Populate subjects
@@ -83,8 +106,11 @@
           : 'Semua target udah clear. <br/>Sekarang tinggal eksekusi level berikutnya.';
         taskListContainer.innerHTML = `
           <div class="empty-state bg-[#0d1d2d] border-2 border-dashed border-[#1d3557] rounded-[32px] p-8 text-center text-[#9fb5ca]">
-            <i data-lucide="check-circle-2" style="width: 32px; height: 32px;" class="mx-auto mb-3 opacity-80 text-[#7dd3fc]"></i>
-            <p class="font-semibold text-[#dfeeff]">${emptyStateMessage}</p>
+            <div class="empty-state-visual">
+              <i data-lucide="clipboard-check"></i>
+            </div>
+            <p class="font-extrabold text-[#e8f6ff]">${emptyStateMessage}</p>
+            <p class="empty-state-hint">Tulis satu target kecil hari ini, lalu biarkan progres membawamu maju.</p>
           </div>
         `;
         return;
@@ -230,6 +256,10 @@
 
     function formatDateFriendly(dateString) {
       if (!dateString) return '';
+      if (/^\d{2}\/\d{2}\/\d{4}$/.test(dateString)) {
+        const [day, month, year] = dateString.split('/');
+        return `${day}/${month}/${year}`;
+      }
       const options = { day: 'numeric', month: 'short', year: 'numeric' };
       return new Date(dateString).toLocaleDateString('id-ID', options);
     }

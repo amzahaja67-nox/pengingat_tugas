@@ -65,13 +65,15 @@
             required
           />
           <div class="date-field relative flex-1">
-             <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                <i data-lucide="calendar" class="text-[#7dd3fc]" style="width: 18px; height: 18px;"></i>
-             </div>
+             <button type="button" class="date-picker-trigger" aria-label="Buka kalender">
+               <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+             </button>
              <input 
-               type="date" 
+               type="date"
                id="deadlineInput"
-               class="task-input w-full bg-[#0d1d2d] text-[#e8f1ff] pl-10 pr-4 py-4 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#1d4ed8] transition-all font-medium border border-[#1d3557]"
+               title="Pilih deadline tugas"
+               aria-label="Pilih deadline tugas"
+               class="task-input w-full bg-[#0d1d2d] text-[#e8f1ff] pl-12 pr-4 py-4 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#1d4ed8] transition-all font-medium border border-[#1d3557]"
              />
           </div>
           <button 
