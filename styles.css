@@ -245,6 +245,28 @@
       background: none;
     }
 
+    .time-input {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0;
+      text-align: left;
+    }
+
+    /* Keep the native time segments aligned with the custom clock icon. */
+    .time-input::-webkit-datetime-edit,
+    .time-input::-webkit-datetime-edit-fields-wrapper {
+      padding: 0;
+    }
+
+    .time-input::-webkit-datetime-edit-hour-field,
+    .time-input::-webkit-datetime-edit-minute-field,
+    .time-input::-webkit-datetime-edit-ampm-field {
+      padding: 0 1px;
+      border-radius: 4px;
+    }
+
     .date-field input::-webkit-clear-button,
     .date-field input::-webkit-inner-spin-button {
       display: none !important;
@@ -457,6 +479,20 @@
       #taskForm input,
       #taskForm button {
         min-height: 3.25rem;
+      }
+
+      .time-field .time-input {
+        height: 3.25rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        padding-left: 3rem;
+        padding-right: 0.75rem;
+        font-size: 1rem;
+        line-height: 1.25rem;
+      }
+
+      .time-field .time-picker-trigger {
+        width: 3rem;
       }
 
       .progress-header {
