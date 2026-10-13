@@ -76,6 +76,18 @@
                class="task-input w-full bg-[#0d1d2d] text-[#e8f1ff] pl-12 pr-4 py-4 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#1d4ed8] transition-all font-medium border border-[#1d3557]"
              />
           </div>
+          <div class="time-field relative flex-1">
+            <button type="button" class="time-picker-trigger" aria-label="Buka pemilih jam">
+              <i data-lucide="clock-3" class="text-[#7dd3fc]" style="width: 18px; height: 18px;"></i>
+            </button>
+            <input
+              type="time"
+              id="deadlineTimeInput"
+              title="Pilih jam deadline tugas"
+              aria-label="Pilih jam deadline tugas"
+              class="task-input w-full bg-[#0d1d2d] text-[#e8f1ff] pl-12 pr-4 py-4 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#1d4ed8] transition-all font-medium border border-[#1d3557]"
+            />
+          </div>
           <button 
             type="submit"
             class="add-task-button bg-[#1d4ed8] hover:bg-[#2563eb] text-[#eff6ff] font-bold py-4 px-8 rounded-3xl flex justify-center items-center gap-2 transition-transform hover:scale-[1.02] active:scale-95 shadow-lg shadow-[#1d4ed8]/30"

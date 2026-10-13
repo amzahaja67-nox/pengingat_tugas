@@ -39,12 +39,14 @@
     const taskForm = document.getElementById('taskForm');
     const taskInput = document.getElementById('taskInput');
     const deadlineInput = document.getElementById('deadlineInput');
+    const deadlineTimeInput = document.getElementById('deadlineTimeInput');
     const taskListContainer = document.getElementById('taskListContainer');
     const gardenContainer = document.getElementById('gardenContainer');
     const gardenCount = document.getElementById('gardenCount');
     const progressSection = document.getElementById('progressSection');
     const encouragementText = document.getElementById('encouragementText');
     const datePickerTrigger = document.querySelector('.date-picker-trigger');
+    const timePickerTrigger = document.querySelector('.time-picker-trigger');
 
     datePickerTrigger.addEventListener('click', () => {
       deadlineInput.focus();
@@ -64,6 +66,17 @@
           deadlineInput.showPicker();
         } catch (error) {
           // Some browsers only allow showPicker from a direct user gesture.
+        }
+      }
+    });
+
+    timePickerTrigger.addEventListener('click', () => {
+      deadlineTimeInput.focus();
+      if (typeof deadlineTimeInput.showPicker === 'function') {
+        try {
+          deadlineTimeInput.showPicker();
+        } catch (error) {
+          // The focus handler or browser-native picker may already be active.
         }
       }
     });
@@ -118,9 +131,9 @@
 
       pendingTasks.forEach((task, index) => {
         const accent = taskAccents[index % taskAccents.length];
-        const deadlineHtml = task.deadline ? `
+        const deadlineHtml = task.deadline || task.deadlineTime ? `
           <span class="task-deadline text-xs font-bold px-2 py-1 rounded-xl flex items-center gap-1 w-max border" style="color: ${accent.dark}; background: ${accent.tint}; border-color: ${accent.border};">
-            <i data-lucide="calendar" style="width: 12px; height: 12px;"></i> ${formatDateFriendly(task.deadline)}
+            <i data-lucide="calendar-clock" style="width: 12px; height: 12px;"></i> ${formatDeadline(task.deadline, task.deadlineTime)}
           </span>
         ` : '';
 
@@ -195,6 +208,7 @@
       const text = taskInput.value.trim();
       const subject = subjectSelect.value;
       const deadline = deadlineInput.value;
+      const deadlineTime = deadlineTimeInput.value;
 
       if (!text || !subject) return;
 
@@ -204,6 +218,7 @@
         subject: subject,
         completed: false,
         deadline: deadline,
+        deadlineTime: deadlineTime,
         createdAt: new Date().toISOString()
       };
 
@@ -212,6 +227,7 @@
       // Reset form
       taskInput.value = '';
       deadlineInput.value = '';
+      deadlineTimeInput.value = '';
       subjectSelect.selectedIndex = 0;
       
       setEncouragement(encouragements.add[Math.floor(Math.random() * encouragements.add.length)]);
@@ -262,6 +278,12 @@
       }
       const options = { day: 'numeric', month: 'short', year: 'numeric' };
       return new Date(dateString).toLocaleDateString('id-ID', options);
+    }
+
+    function formatDeadline(dateString, timeString) {
+      const date = dateString ? formatDateFriendly(dateString) : '';
+      const time = timeString ? `Pukul ${timeString.replace(':', '.')}` : '';
+      return [date, time].filter(Boolean).join(' · ');
     }
 
     function saveData() {

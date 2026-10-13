@@ -206,12 +206,43 @@
       filter: drop-shadow(0 0 6px rgba(53, 213, 255, 0.55));
     }
 
+    .time-picker-trigger {
+      position: absolute;
+      z-index: 2;
+      inset: 0 auto 0 0;
+      width: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #55e3ff;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .time-picker-trigger:hover,
+    .time-picker-trigger:focus-visible {
+      color: #8cecff;
+    }
+
+    .time-picker-trigger i {
+      color: inherit !important;
+      filter: drop-shadow(0 0 6px rgba(53, 213, 255, 0.55));
+    }
+
     .date-field input::-webkit-calendar-picker-indicator {
       display: none !important;
       width: 0;
       opacity: 0 !important;
       background: none;
       cursor: pointer;
+    }
+
+    .time-field input::-webkit-calendar-picker-indicator {
+      display: none !important;
+      width: 0;
+      opacity: 0 !important;
+      background: none;
     }
 
     .date-field input::-webkit-clear-button,
